@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://unpkg.com/normalize.css') layer(normalize);
+
+
+
+@layer foundation {
+	*,
+	*:after,
+	*:before {
+		box-sizing: border-box;
+	}
+
+	body {
+		min-height: 100vh;
+		background: hsl(0 0% 98%);
+		font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+			Helvetica, Arial, sans-serif, system-ui;
+		overflow-x: hidden;
+	}
+
+	header {
+		min-height: 100vh;
+		display: flex;
+	}
+
+	.content {
+		align-self: end;
+		max-width: calc(100% - 2rem);
+		width: 800px;
+		margin: 0 auto 8rem;
+		position: relative;
+	}
+
+	p {
+		display: grid;
+		gap: 2rem;
+		margin: 0;
+		line-height: 1;
+		font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
+	}
+
+	p > span:first-of-type {
+		font-weight: 500;
+		font-size: clamp(1rem, 0.75vw + 1rem, 3rem);
+		color: hsl(0 0% 60%);
+		position: relative;
+		padding-left: 2.5ch;
+	}
+
+	p > span:first-of-type::after {
+		content: '🤙';
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	.eyes {
+		transform-box: fill-box;
+		transform-origin: 50% 50%;
+		animation: blink 6s infinite linear;
+	}
+
+	.bear .eyes {
+		animation-delay: -2s;
+	}
+
+	@keyframes blink {
+	  0%, 46%, 48%, 50%, 100% {
+	    scale: 1 1;
+	  }
+	  47%, 49% {
+	    scale: 1 0.01;
+	  }
+	}
+
+	main {
+		min-height: 100vh;
+		font-size: clamp(2rem, 4vw + 1rem, 3rem);
+		display: grid;
+		place-items: center;
+	}
+
+	footer {
+		padding: 2rem 1rem;
+		opacity: 0.875;
+		text-align: center;
+	}
+
+	h1 {
+		position: absolute;
+		right: 0.5rem;
+		top: 4rem;
+		margin: 0;
+		text-align: right;
+		line-height: 0.7;
+		font-weight: 800;
+		font-size: clamp(4rem, 20vmin + 1rem, 12rem);
+	}
+}
+
+@layer attributes {
+	.bear {
+		width: 10rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -10% -100%;
+		z-index: -1;
+	}
+
+	.attributes {
+		position: absolute;
+		bottom: 0;
+		left: 65%;
+	}
+	.attribute {
+		--font-size: 2.5rem;
+		--hue: 10;
+		--ox: 0;
+		--oy: 0;
+		--dx: 0;
+		--dy: 0;
+		--or: 0;
+		--dr: 0;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: var(--font-size);
+		border: 1px solid hsl(var(--hue) 100% 80%);
+		padding: 0.25rem 0.5rem;
+		border-radius: 6px;
+		position: absolute;
+		bottom: 0%;
+		left: 50%;
+		translate: -50% 0%;
+		background: linear-gradient(hsl(var(--hue) 100% 90% / 0.75), #0000 50%),
+			hsl(var(--hue) 100% 80%);
+		color: hsl(var(--hue) 100% 40% / 0.8);
+		box-shadow: 1px -1px 0.5rem 0rem hsl(var(--hue) 100% 30%) inset;
+		transform: translate(var(--ox), var(--oy)) rotate(var(--or))
+			translate(var(--dx), var(--dy)) rotate(var(--dr));
+	}
+
+	.attribute:nth-of-type(1) {
+		--hue: 10;
+		/*	Origin	*/
+		--ox: -25%;
+		--oy: 50%;
+		--or: 7deg;
+		/*	Destination	*/
+		--dx: -400vw;
+		--dr: -190deg;
+		--dy: -50vh;
+	}
+	.attribute:nth-of-type(2) {
+		--hue: 60;
+		--ox: 56%;
+		--oy: -48%;
+		--or: 12deg;
+		/*	Destination	*/
+		--dx: 80vw;
+		--dr: 200deg;
+		--dy: 20vh;
+	}
+	.attribute:nth-of-type(3) {
+		--hue: 180;
+		--ox: -35%;
+		--oy: -35%;
+		--or: -10deg;
+		/*	Destination	*/
+		--dx: -40vw;
+		--dr: 60deg;
+		--dy: -150vh;
+	}
+	.attribute:nth-of-type(4) {
+		--hue: 120;
+		--ox: 18%;
+		--oy: 35%;
+		--or: 15deg;
+		/*	Destination	*/
+		--dx: 10vw;
+		--dr: -290deg;
+		--dy: -120vh;
+	}
+	.attribute:nth-of-type(5) {
+		--hue: 210;
+		--ox: 56%;
+		--oy: -16%;
+		--or: 10deg;
+		/*	Destination	*/
+		--dx: 80vw;
+		--dr: 230deg;
+		--dy: -80vh;
+	}
+	.attribute:nth-of-type(6) {
+		--hue: 280;
+		--ox: 5%;
+		--oy: 15%;
+		--or: -8deg;
+		/*	Destination	*/
+		--dx: -120vw;
+		--dr: -540deg;
+		--dy: 40vh;
+	}
+
+	.attribute svg {
+		width: var(--font-size);
+		stroke-width: 2;
+	}
+}
+
+@layer scrolls {
+	@supports (animation-timeline: scroll()) {
+		header {
+			view-timeline-name: --header;
+		}
+		.attribute {
+			animation: expand both linear;
+			animation-timeline: --header;
+			animation-range: exit;
+			transform: translate(var(--ox), var(--oy)) rotate(var(--or))
+			translate(0, 0) rotate(0);
+		}
+		@keyframes expand {
+			to {
+				transform: translate(var(--ox), var(--oy)) rotate(var(--or))
+			translate(var(--dx), var(--dy)) rotate(var(--dr));
+			}
+		}
+	}
+}
+
+@layer socials {
+	.socials {
+		display: flex;
+		gap: 0.25rem;
+		position: fixed;
+		left: 1rem;
+		top: 1rem;
+		padding: 0 0.5rem;
+		border-radius: 100px;
+		border: 1px solid hsl(0 0% 80%);
+		background: hsl(0 0% 100%);
+	}
+	/* Socials stuff */
+	.x-link,
+	.bear-link {
+		color: hsl(0 0% 0%);
+		width: 48px;
+		aspect-ratio: 1;
+		display: grid;
+		place-items: center;
+		opacity: 0.8;
+	}
+
+	.bear-link {
+		bottom: unset;
+		top: 1rem;
+	}
+
+	:where(.x-link, .bear-link):is(:hover, :focus-visible) {
+		opacity: 1;
+	}
+	.bear-link svg {
+		width: 75%;
+	}
+	.x-link svg {
+		width: 50%;
+	}
+}
+a{
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Education&nbsp;<br></h1>
+        <div class="content">
+          <p>
+            <span>Hay !! This is my Education and Some Work</span>
+            <span>showing you how to bring your awesome ideas to life with code.</span>
+          </p>
+          <div class="attributes">
+            <!-- Surprise guest. -->
+            <img src="bear.svg" alt="" width="100">
+            <!-- Content, Design, Speaking, Creative, Engineering  -->
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+              <a href="https://github.com/kapilinania" target="_blank">engineering</a>
+            </div>
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+              </svg>
+              <a href="">teaching</a>
+            </div>
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+              </svg>
+              consulting
+            </div>
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+              </svg>
+              speaking
+            </div>
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+              </svg>
+              design
+            </div>
+            <div class="attribute">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+              </svg>
+              <a href="">creative</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <h2>Next Sections.</h2>
+      </main>
+      <footer>Made by kapil &copy; 2024</footer>
+      <div class="socials">
+        <a class="bear-link" href="" target="_blank" rel="noreferrer noopener">
+          <svg class="w-9" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+            <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+            <g class="eyes">
+              <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor"></circle>
+              <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor"></circle>
+            </g>
+            <path d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z" fill="currentColor"></path>
+            <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"></rect>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z" fill="currentColor"></path>
+          </svg>
+        </a>
+        <a class="x-link" href="" target="_blank" rel="noreferrer noopener">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <title>X</title>
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" fill="currentColor" />
+          </svg>
+        </a>
+      </div>
+      <script>
+        import gsap from 'https://cdn.skypack.dev/gsap@3.12.0';
+        import { ScrollTrigger } from 'https://cdn.skypack.dev/gsap@3.12.0/ScrollTrigger';
+    
+    if (!CSS.supports('animation-timeline: scroll()')) {
+      gsap.registerPlugin(ScrollTrigger)
+    
+    
+      const attrs = gsap.utils.toArray('.attribute')
+      const dx = [-100, 80, -40, 10, 80, -120]
+      const dy = [-50, 20, -150, -120, -80, 40]
+      const dr = [-190, 200, 60, -290, 230, -540]
+    
+      for (let i = 0; i < attrs.length; i++) {
+        const attr = attrs[i]
+        gsap.fromTo(attr, {
+          '--dx': '0',
+          '--dy': '0',
+          '--dr': '0'
+        }, {
+          '--dx': `${dx[i]}vw`,
+          '--dy': `${dy[i]}vh`,
+          '--dr': `${dr[i]}deg`,
+          scrollTrigger: {
+            trigger: 'header',
+            scrub: 0.5,
+            start: 'top top',
+            end: 'bottom top'
+          }
+        })
+      }
+    
+    }
+    </script>
+</body>
+
+</html>
