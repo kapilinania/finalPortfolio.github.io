@@ -1,1 +1,4 @@
-Here i am create my new portfolio soo this is on going first i am make component
+# My Portfolio
+
+Welcome to my portfolio project! This portfolio showcases my skills, projects, and experience. 
+This is On going i am updated time to time 
